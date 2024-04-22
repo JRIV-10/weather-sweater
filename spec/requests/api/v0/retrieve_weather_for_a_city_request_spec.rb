@@ -26,8 +26,8 @@ RSpec.describe 'Forecast Request', type: :request do
       )
       .to_return(status: 200, body: json_response_2)
 
-      params = {"location": "cincinatti, oh"}
-      headers = {"Content_Type": "application/json", "Accept": "application/json"}
+    params = {"location": "cincinatti, oh"}
+    headers = {"Content_Type": "application/json", "Accept": "application/json"}
 
     get "/api/v0/forecast", headers: headers, params: params
 
