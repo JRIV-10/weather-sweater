@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_create :new_key
 
   validates :email, presence: true, uniqueness: true
-  validates :api, uniqueness: true
+  validates :api_key, uniqueness: true
   validates :password, presence: true
   has_secure_password
 
