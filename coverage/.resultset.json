@@ -198,17 +198,32 @@
           1,
           1,
           null,
+          1,
+          1,
+          null,
           null,
           null,
           null,
           null
         ]
       },
-      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/controllers/api/v0/forecast_controller.rb": {
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/controllers/api/v1/book_search_controller.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
           1,
           1,
           null,
@@ -231,6 +246,7 @@
           null,
           1,
           1,
+          null,
           1,
           null,
           null
@@ -277,6 +293,18 @@
           null
         ]
       },
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/poros/forecast_current.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/poros/forecast.rb": {
         "lines": [
           1,
@@ -286,52 +314,52 @@
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           1,
-          1,
-          1,
-          5,
-          5,
-          5,
-          5,
-          5,
-          5,
-          5,
-          5,
-          5,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
           null,
           1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
-          null,
-          1,
-          1,
-          1,
-          24,
-          24,
-          24,
-          24,
-          24,
-          24,
-          null,
-          1,
+          0,
           null,
           null
         ]
@@ -343,8 +371,68 @@
           1,
           null
         ]
+      },
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/facades/book_search_facade.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/services/book_search_service.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/poros/book_search.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/joeyreyes/turing_work/3mod/final_project/weather-sweater/app/serializers/book_search_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1713794349
+    "timestamp": 1713808407
   }
 }

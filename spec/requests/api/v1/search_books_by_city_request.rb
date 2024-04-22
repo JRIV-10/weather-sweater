@@ -4,11 +4,12 @@ RSpec.describe 'Book-Search Request', type: :request do
   before do 
     json_response_1 = File.read("spec/fixtures/denver_coords.json")
     json_response_2 = File.read("spec/fixtures/denver_forecast.json")
+    json_response_3 = File.read("spec/fixtures/book_search.json")
     stub_request(:get, "https://mapquestapi.com/geocoding/v1/address")
       .with(
         query: {
           key: Rails.application.credentials.geolocation_api_key[:key], 
-          location: " Denver, CO"
+          location: "Denver, CO"
         }
       )
       .to_return(status: 200, body: json_response_1)
@@ -26,7 +27,15 @@ RSpec.describe 'Book-Search Request', type: :request do
       )
       .to_return(status: 200, body: json_response_2)
 
-      params = {"location": "Devnver, CO"}
+      stub_request(:get, "https://openlibrary.org/search.json")
+        .with(
+          query: {
+            q: "Denver, CO"
+          }
+        )
+        .to_return(status: 200, body: json_response_3)
+
+      params = {"location": "Denver, CO", "quantity": "5"}
       headers = {"Content_Type": "application/json", "Accept": "application/json"}
       get "/api/v1/book-search", headers: headers, params: params
   end
