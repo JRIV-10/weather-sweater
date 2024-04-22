@@ -1,5 +1,5 @@
 class ForecastFacade
-
+  
   def self.forecast_location(location)
     ForecastService.city_coordinates(location)[:results][0][:locations][0][:latLng]
   end
