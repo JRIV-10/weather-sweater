@@ -31,5 +31,33 @@ RSpec.describe "User Registration", type: :request do
       expect(formatted_data[:attributes][:email]).to eq("tiredstudent@turing.com")
       expect(formatted_data[:attributes][:api_key]).to be_a(String)
     end
+
+    describe "sad path" do 
+      it "errors with invalid password or email" do 
+      post "/api/v0/users", headers: @headers, params: JSON.generate({email: "", password: "password123", password_confirmation: "password123"})
+      
+      expect(response).to_not be_successful
+      expect(response.status).to eq(400)
+
+      data = JSON.parse(response.body, symbolize_names: true)
+
+      expect(data).to have_key(:errors)
+      expect(data[:errors]).to be_a(Hash)
+      expect(data[:errors][:message]).to eq("Validation failed: Email can't be blank")
+      end
+
+      it "errors when the passwords are not the same" do 
+        post "/api/v0/users", headers: @headers, params: JSON.generate({email: "tiredstudent@turing.com", password: "password12355", password_confirmation: "password123"})
+      
+        expect(response).to_not be_successful
+        expect(response.status).to eq(400)
+
+        data = JSON.parse(response.body, symbolize_names: true)
+
+        expect(data).to have_key(:errors)
+        expect(data[:errors]).to be_a(Hash)
+        expect(data[:errors][:message]).to eq("Validation failed: Password confirmation doesn't match Password")
+      end
+    end
   end 
 end
