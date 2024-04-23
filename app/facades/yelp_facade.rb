@@ -3,7 +3,8 @@ class YelpFacade
     place = YelpService.search(params)
     {
       destination: params[:destination],
-      forecast: yelp_forecast(params[:destination])
+      forecast: parsed_forecast(params[:destination])
+      # require 'pry'; binding.pry
     }
     # require 'pry'; binding.pry
   end
@@ -11,5 +12,13 @@ class YelpFacade
   def self.yelp_forecast(location)
     coords = ForecastFacade.forecast_location(location)
     forecast = ForecastFacade.weather_forecast(coords)
+  end
+
+  def self.parsed_forecast(location)
+    current_forecast = yelp_forecast(location).current_weather
+    {
+      summary: current_forecast[:condition],
+      temperature: current_forecast[:temperature]
+    }
   end
 end
