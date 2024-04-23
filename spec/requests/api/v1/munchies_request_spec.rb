@@ -28,7 +28,14 @@ RSpec.describe "Yelp API Request", type: :request do
         )
         .to_return(status: 200, body: json_response_2)
 
-        params = {"destination": "puelbo, CO", "food": "italain"}
+      stub_request(:get, "https://api.yelp.com/v3/businesses/search?limit=20&location=Denver,%20CO&sort_by=best_match&term=food=italain").
+        with(
+          headers: {
+            'Authorization'=>"Bearer #{Rails.application.credentials.yelp_api_key[:key]}"
+          }).
+        to_return(status: 200, body: json_response_3)
+
+        params = {"destination": "Denver, CO", "food": "italain"}
         headers = {"Content_Type": "application/json", "Accept": "application/json"}
         get "/api/v1/munchies", headers: headers, params: params
     end
