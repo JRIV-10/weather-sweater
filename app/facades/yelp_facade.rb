@@ -1,12 +1,12 @@
 class YelpFacade 
   def self.find_places(params)
-    place = YelpService.search(params)
+    data = YelpService.search(params)
+    restaurant_data = extract_restaurant_data(data)
     {
-      destination: params[:destination],
-      forecast: parsed_forecast(params[:destination])
-      # require 'pry'; binding.pry
+      destination_city: params[:destination],
+      forecast: parsed_forecast(params[:destination]),
+      restaurant: one_restaurant(restaurant_data)
     }
-    # require 'pry'; binding.pry
   end
 
   def self.yelp_forecast(location)
@@ -20,5 +20,13 @@ class YelpFacade
       summary: current_forecast[:condition],
       temperature: current_forecast[:temperature]
     }
+  end
+
+  def self.one_restaurant(place)
+    Yelp.new(place)
+  end
+
+  def self.extract_restaurant_data(data)
+    data[:businesses].first
   end
 end
