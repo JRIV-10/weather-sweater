@@ -66,6 +66,7 @@ RSpec.describe "YelpFacade" do
     expect(restaurant.reviews).to eq(17)
   end 
   it "self.parsed_forecast(location)" do
+    
     location = "Denver, CO"
     forecast = YelpFacade.parsed_forecast(location)
 
