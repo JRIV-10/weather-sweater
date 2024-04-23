@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       resources :forecast, only: [:index]
       resources :users, only: [:create]
     end
+    namespace :v1 do 
+      resources :munchies, only: [:index]
+    end
   end 
   # Defines the root path route ("/")
   # root "posts#index"

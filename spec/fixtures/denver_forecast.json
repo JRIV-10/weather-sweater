@@ -1,0 +1,23 @@
+{
+  "location": {
+      "name": "Denver",
+      "region": "Colorado",
+      "country": "United States of America",
+      "lat": 39.74,
+      "lon": -104.99,
+      "tz_id": "America/Denver",
+      "localtime_epoch": 1713799596,
+      "localtime": "2024-04-22 9:26"
+  },
+  "current": {
+      "last_updated": "2024-04-22 09:15",
+      "temp_f": 60.8,
+      "condition": {
+          "text": "Partly cloudy"
+      },
+      "humidity": 23,
+      "feelslike_f": 60.8,
+      "vis_miles": 9.0,
+      "uv": 5.0
+  }
+}
