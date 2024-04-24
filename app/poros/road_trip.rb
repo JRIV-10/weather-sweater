@@ -2,8 +2,8 @@ class RoadTrip
   attr_reader :start_city, :end_city, :travel_time, :weather_at_eta, :id, :time
 
   def initialize(data)
-    @start_city = data[:origin]
-    @end_city = data[:destination]
+    @start_city = data[:start_city]
+    @end_city = data[:end_city]
     @travel_time = total_travel_time(data)
     @time = data[:directions][:route][:time]
     @weather_at_eta = get_end_city_weather(data[:forecast]) unless total_travel_time(data) == "Impossible Route"

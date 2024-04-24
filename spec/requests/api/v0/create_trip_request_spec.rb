@@ -68,7 +68,7 @@ RSpec.describe "RoadTrip request", type: :request do
       expect(data).to have_key(:id)
       expect(data[:id]).to eq(nil)
       expect(data).to have_key(:type)
-      expect(data[:type]).to eq("trip")
+      expect(data[:type]).to eq("road_trip")
       expect(data).to have_key(:attributes)
       expect(data[:attributes]).to be_a(Hash)
 
