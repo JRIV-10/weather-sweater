@@ -8,4 +8,8 @@ class ForecastFacade
     data = ForecastService.forecast_data(coords)
     Forecast.new(data)
   end
+
+  def self.raw_weather_forecast(coords)
+    data = ForecastService.forecast_data(coords)
+  end
 end

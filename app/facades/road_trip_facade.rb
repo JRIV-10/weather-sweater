@@ -1,20 +1,21 @@
 class RoadTripFacade 
   def self.trip_details(params)
-    start_coords = city_coords(params[:start_city])
-    end_coords = city_coords(params[:end_city])
-
-    start_trip(start_coords, end_coords, params[:start_city], params[:end_city])
+    start_coords = city_coords(params[:origin])
+    end_coords = city_coords(params[:destination])
+    
+    start_trip(start_coords, end_coords, params[:origin], params[:destination])
   end
 
-  def self.start_trip(start_coords, end_coords, start_city, end_city)
+  def self.start_trip(start_coords, end_coords, origin, destination)
     directions = start_directions(start_coords, end_coords)
-    forecast = ForecastFacade.weather_forecast(end_coords)
+    forecast = ForecastFacade.raw_weather_forecast(end_coords)
     data = {
       directions: directions, 
       forecast: forecast, 
-      start_city: start_city,
-      end_city: end_city
+      origin: origin,
+      destination: destination
     }
+    
     RoadTrip.new(data)
   end
 

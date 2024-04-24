@@ -7,11 +7,11 @@ RSpec.describe "RoadTrip request", type: :request do
       @user = User.create!({email: "test@email.com", password: "password", password_confirmation: "password"})
       @api_key = @user.api_key
       @headers = {"CONTENT_TYPE" => "application/json"}
-      @body = {start_city: "san diego, ca", end_city: "denver, co", api_key: @api_key}
+      @body = {origin: "san diego, ca", destination: "denver, co", api_key: @api_key}
       @start_coords = "32.71568,-117.16171"
       @end_coords = "39.74001,-104.99202"
-      @start_city = "san diego, ca"
-      @end_city = "denver, co"
+      @origin = "san diego, ca"
+      @destination = "denver, co"
 
       json_response_1 = File.read("spec/fixtures/sd_coords.json")
       stub_request(:get, "https://mapquestapi.com/geocoding/v1/address")
@@ -68,16 +68,16 @@ RSpec.describe "RoadTrip request", type: :request do
       expect(data).to have_key(:id)
       expect(data[:id]).to eq(nil)
       expect(data).to have_key(:type)
-      expect(data[:type]).to eq("trip")
+      expect(data[:type]).to eq("road_trip")
       expect(data).to have_key(:attributes)
       expect(data[:attributes]).to be_a(Hash)
 
       attributes = data[:attributes]
       
-      expect(attributes).to have_key(:start_city)
-      expect(attributes[:start_city]).to be_a(String)
-      expect(attributes).to have_key(:end_city)
-      expect(attributes[:end_city]).to be_a(String)
+      expect(attributes).to have_key(:origin)
+      expect(attributes[:origin]).to be_a(String)
+      expect(attributes).to have_key(:destination)
+      expect(attributes[:destination]).to be_a(String)
       expect(attributes).to have_key(:travel_time)
       expect(attributes[:travel_time]).to be_a(String)
       expect(attributes).to have_key(:weather_at_eta)

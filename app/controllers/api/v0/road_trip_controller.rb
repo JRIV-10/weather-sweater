@@ -12,6 +12,6 @@ class Api::V0::RoadTripController < ApplicationController
   private 
 
   def trip_params
-    params.require(:trip).permit(:start_city, :end_city)
+    params.permit(:origin, :destination)
   end
 end
