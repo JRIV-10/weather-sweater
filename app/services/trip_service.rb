@@ -14,16 +14,15 @@ class TripService
     data = JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.get_directions(start_coords_coords, end_coords)
+  def self.get_directions(start_coords, end_coords)
     response = get_directions_url(start_coords, end_coords)
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def self.get_directions_url(origin_coords, dest_coords)
-    conn.get("/directions/v2/route") do |req|
-      req.params[:from] = origin_coords
-      req.params[:to] = dest_coords
-      req.params[:key] = Rails.application.credentials.geolocation_api_key
+  def self.get_directions_url(start_coords, end_coords)
+      conn_geolocation.get("/directions/v2/route") do |req|
+      req.params[:from] = start_coords
+      req.params[:to] = end_coords
     end
   end
 end

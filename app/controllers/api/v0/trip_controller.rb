@@ -3,7 +3,7 @@ class Api::V0::TripController < ApplicationController
     user = User.find_by(api_key: params[:api_key])
     if user 
       trip = TripFacade.trip_details(trip_params)
-      render json: TripSerializer.new(road_trip), status: 201
+      render json: TripSerializer.new(trip), status: 201
     else
       render json: ErrorSerializer.serialize(ErrorMessage.new("Error: Could not verify API Key", 401)), status: 401
     end
@@ -12,6 +12,6 @@ class Api::V0::TripController < ApplicationController
   private 
 
   def trip_params
-    params.permit(:start_city, :end_city)
+    params.require(:trip).permit(:start_city, :end_city)
   end
 end

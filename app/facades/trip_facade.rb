@@ -2,6 +2,7 @@ class TripFacade
   def self.trip_details(params)
     start_coords = city_coords(params[:start_city])
     end_coords = city_coords(params[:end_city])
+
     start_trip(start_coords, end_coords, params[:start_city], params[:end_city])
   end
 
@@ -23,12 +24,6 @@ class TripFacade
 
   def self.city_coords(location)
     data = TripService.city_coordinates(location)
-    parse_coords(data)
-  end
-
-  def parse_coords(data)
-    lat = data[:results].first[:locations].first[:latLng][:lat]
-    lng = data[:results].first[:locations].first[:latLng][:lng]
-    "#{lat},#{lng}"
+    lat_lng = data[:results].first[:locations].first[:latLng]
   end
 end
