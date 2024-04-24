@@ -1,23 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe Trip do
+RSpec.describe RoadTrip do
   before do
     directions = File.read("spec/fixtures/sd_to_den.json")
     directions = JSON.parse(directions, symbolize_names: true)
 
     forecast = File.read("spec/fixtures/denver_forecast.json")
     @forecast = JSON.parse(forecast, symbolize_names: true)
-
+    
     trip_data = { directions: directions, forecast: @forecast, origin: "san diego, ca", destination: "denver, co" }
 
-    @trip = Trip.new(trip_data)
+    @trip = RoadTrip.new(trip_data)
 
     allow(Time).to receive(:now).and_return(Time.new("2024-04-24 01:54:33.492178 -0700"))
   end
 
   describe 'initialize' do
     it 'exists' do
-      expect(@trip).to be_a(Trip)
+      expect(@trip).to be_a(RoadTrip)
     end
 
     it 'has attributes' do

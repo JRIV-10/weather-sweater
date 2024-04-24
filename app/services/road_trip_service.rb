@@ -1,4 +1,4 @@
-class TripService 
+class RoadTripService 
   def self.city_coordinates(location)
     get_url_geolocation("/geocoding/v1/address", location: location)
   end

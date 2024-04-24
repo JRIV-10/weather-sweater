@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Trip request", type: :request do
+RSpec.describe "RoadTrip request", type: :request do
   describe "As a User" do
 
     before do
@@ -53,7 +53,7 @@ RSpec.describe "Trip request", type: :request do
     end
 
     it "displays weather from the end city location for time of arrival" do
-      post "/api/v0/trip", headers: @headers, params: JSON.generate(@body)
+      post "/api/v0/road_trip", headers: @headers, params: JSON.generate(@body)
       
       expect(response).to be_successful
       expect(response.status).to eq(201)

@@ -1,4 +1,4 @@
-class TripFacade 
+class RoadTripFacade 
   def self.trip_details(params)
     start_coords = city_coords(params[:start_city])
     end_coords = city_coords(params[:end_city])
@@ -15,15 +15,15 @@ class TripFacade
       start_city: start_city,
       end_city: end_city
     }
-    Trip.new(data)
+    RoadTrip.new(data)
   end
 
   def self.start_directions(start_coords, end_coords)
-    TripService.get_directions(start_coords, end_coords)
+    RoadTripService.get_directions(start_coords, end_coords)
   end
 
   def self.city_coords(location)
-    data = TripService.city_coordinates(location)
+    data = RoadTripService.city_coordinates(location)
     lat_lng = data[:results].first[:locations].first[:latLng]
   end
 end

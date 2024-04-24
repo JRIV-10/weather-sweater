@@ -1,4 +1,4 @@
-class Trip
+class RoadTrip
   attr_reader :start_city, :end_city, :travel_time, :weather_at_eta, :id, :time
 
   def initialize(data)
@@ -31,22 +31,22 @@ class Trip
   end
 
   def temp_at_arrival(forecast)
-    data = forecast.daily_weather.find { |day| day[:date] == arrival_time(@time)[0..9] }
-
-  temp = 0.0
-  if data && data[:hourly]
-    data[:hourly].each do |hour|
-      if hour[:time][0..12] == arrival_time(@time)[0..12]
-        temp = hour[:temperature]
+    data = forecast[:forecast][:forecastday].find { |day| day[:date] == arrival_time(@time)[0..9] }
+  
+    temp = 0.0
+    if data && data[:hour]
+      data[:hour].each do |hour|
+        if hour[:time][0..12] == arrival_time(@time)[0..12]
+          temp = hour[:temp_f]
+        end
       end
     end
+
+    temp
   end
 
-  temp
-end
-
   def condition_at_arrival(forecast)
-    data = forecast.hourly_weather.find { |hour| hour[:time][0..12] == arrival_time(@time)[0..12] }
-    data[:condition] if data
+    data = forecast[:forecast][:forecastday].flat_map { |day| day[:hour] }.find { |hour| hour[:time][0..12] == arrival_time(@time)[0..12] }
+    data[:condition][:text] if data
   end
 end

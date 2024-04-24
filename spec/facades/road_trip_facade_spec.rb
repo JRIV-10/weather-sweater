@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe TripFacade do
+RSpec.describe RoadTripFacade do
   before(:each) do
-    @facade = TripFacade
+    @facade = RoadTripFacade
     @start_city = "san diego, ca"
     @end_city = "denver, co"
     @start_coords = "32.71568,-117.16171"
@@ -44,7 +44,7 @@ RSpec.describe TripFacade do
 
   describe '.start_trip' do
     it 'creates a road trip object from the given data' do
-      expect(@facade.start_trip(@origin_coords, @dest_coords, @origin, @destination)).to be_a(Trip)
+      expect(@facade.start_trip(@origin_coords, @dest_coords, @origin, @destination)).to be_a(RoadTrip)
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe TripFacade do
     it 'gets the road trip object from the params passed in' do
       params = {start_city: @start_city, end_city: @end_city}
 
-      expect(@facade.trip_details(params)).to be_a(Trip)
+      expect(@facade.trip_details(params)).to be_a(RoadTrip)
     end
   end
 end

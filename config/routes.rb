@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :forecast, only: [:index]
       resources :users, only: [:create]
       resources :sessions, only: [:create]
-      resources :trip, only: [:create]
+      resources :road_trip, only: [:create]
     end
   end 
   # Defines the root path route ("/")
