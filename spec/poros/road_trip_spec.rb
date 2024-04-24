@@ -8,7 +8,7 @@ RSpec.describe RoadTrip do
     forecast = File.read("spec/fixtures/denver_forecast.json")
     @forecast = JSON.parse(forecast, symbolize_names: true)
     
-    trip_data = { directions: directions, forecast: @forecast, start_city: "san diego, ca", end_city: "denver, co" }
+    trip_data = { directions: directions, forecast: @forecast, origin: "san diego, ca", destination: "denver, co" }
 
     @trip = RoadTrip.new(trip_data)
 
@@ -21,17 +21,17 @@ RSpec.describe RoadTrip do
     end
 
     it 'has attributes' do
-      expect(@trip.start_city).to eq("san diego, ca")
-      expect(@trip.end_city).to eq("denver, co")
+      expect(@trip.origin).to eq("san diego, ca")
+      expect(@trip.destination).to eq("denver, co")
       expect(@trip.travel_time).to eq("14:54:21")
       expect(@trip.weather_at_eta).to be_a(Hash)
     end
   end
 
   describe '#instance methods' do
-    describe '#get_end_city_weather(forecast)' do
+    describe '#get_destination_weather(forecast)' do
       it 'creates a hash with the appropriate data' do
-        expect(@trip.get_end_city_weather(@forecast)).to eq({ datetime: "2024-04-24 16:48", temperature: 75.3, condition: "Partly Cloudy " })
+        expect(@trip.get_destination_weather(@forecast)).to eq({ datetime: "2024-04-24 16:48", temperature: 75.3, condition: "Partly Cloudy " })
       end
     end
 
