@@ -8,7 +8,7 @@ RSpec.describe RoadTrip do
     forecast = File.read("spec/fixtures/denver_forecast.json")
     @forecast = JSON.parse(forecast, symbolize_names: true)
     
-    trip_data = { directions: directions, forecast: @forecast, origin: "san diego, ca", destination: "denver, co" }
+    trip_data = { directions: directions, forecast: @forecast, start_city: "san diego, ca", end_city: "denver, co" }
 
     @trip = RoadTrip.new(trip_data)
 

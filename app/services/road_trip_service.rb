@@ -15,6 +15,8 @@ class RoadTripService
   end
 
   def self.get_directions(start_coords, end_coords)
+    start_coords = "#{start_coords[:lat]},#{start_coords[:lng]}"
+    end_coords = "#{end_coords[:lat]},#{end_coords[:lng]}"
     response = get_directions_url(start_coords, end_coords)
     JSON.parse(response.body, symbolize_names: true)
   end

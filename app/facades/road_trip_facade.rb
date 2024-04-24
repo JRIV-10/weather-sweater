@@ -2,7 +2,7 @@ class RoadTripFacade
   def self.trip_details(params)
     start_coords = city_coords(params[:start_city])
     end_coords = city_coords(params[:end_city])
-
+    # require 'pry'; binding.pry
     start_trip(start_coords, end_coords, params[:start_city], params[:end_city])
   end
 
